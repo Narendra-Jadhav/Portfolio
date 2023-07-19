@@ -13,7 +13,7 @@ const Section = styled.div`
   justify-content: space-between;
 
   @media only screen and (max-width: 768px) {
-    height: 200vh;
+    height: 100vh;
   }
 `;
 
@@ -49,6 +49,8 @@ const Title = styled.h1`
   font-size: 90px;
 
   @media only screen and (max-width: 768px) {
+    margin-top: 30px;
+    font-size: 60px;
     text-align: center;
   }
 `;
@@ -56,6 +58,11 @@ const Title = styled.h1`
 const Subtitle = styled.h2`
   color: #da4ea2;
   font-size: 30px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 26px;
+    text-align: center;
+  }
 `;
 
 const Desc = styled.p`
@@ -100,8 +107,8 @@ const Img = styled.img`
   animation: animate 2s infinite ease alternate;
 
   @media only screen and (max-width: 768px) {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
   }
 
   @keyframes animate {
