@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { GitHub, LinkedIn } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import Typed from 'typed.js';
+import Typed from "typed.js";
 
 const Section = styled.div`
   height: 100vh;
@@ -11,21 +11,18 @@ const Section = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  @media only screen and (max-width: 768px) {
-    height: 100vh;
-  }
 `;
 
 const Container = styled.div`
   height: 100%;
   scroll-snap-align: center;
-  width: 1400px;
+  width: 85%;
   display: flex;
   justify-content: space-between;
 
   @media only screen and (max-width: 768px) {
-    width: 100%;
+    width: 95%;
+    height: 93%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -33,14 +30,13 @@ const Container = styled.div`
 `;
 
 const Left = styled.div`
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
-    flex: 1;
     align-items: center;
   }
 `;
@@ -50,8 +46,12 @@ const Title = styled.h1`
 
   @media only screen and (max-width: 768px) {
     margin-top: 30px;
-    font-size: 60px;
+    font-size: 57px;
     text-align: center;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 60px;
   }
 `;
 
@@ -63,6 +63,9 @@ const Subtitle = styled.h2`
     font-size: 26px;
     text-align: center;
   }
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 28px;
+  }
 `;
 
 const Desc = styled.p`
@@ -71,6 +74,9 @@ const Desc = styled.p`
   @media only screen and (max-width: 768px) {
     padding: 20px;
     text-align: center;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 22px;
   }
 `;
 
@@ -86,17 +92,16 @@ const GitHubIcon = styled(GitHub)`
 `;
 
 const Right = styled.div`
-  flex: 3;
+  flex: 1;
   position: relative;
   @media only screen and (max-width: 768px) {
-    flex: 1;
     width: 100%;
   }
 `;
 
 const Img = styled.img`
-  width: 600px;
-  height: 600px;
+  width: 550px;
+  height: 550px;
   object-fit: contain;
   position: absolute;
   top: 0;
@@ -110,6 +115,10 @@ const Img = styled.img`
     width: 200px;
     height: 200px;
   }
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    width: 400px;
+    height: 400px;
+  }
 
   @keyframes animate {
     to {
@@ -119,21 +128,20 @@ const Img = styled.img`
 `;
 
 const Hero = () => {
+  // Create reference to store the DOM element containing the animation
+  const el = React.useRef(null);
 
-    // Create reference to store the DOM element containing the animation
-    const el = React.useRef(null);
-
-    React.useEffect(() => {
+  React.useEffect(() => {
     const typed = new Typed(el.current, {
-        strings: ['Web Development', 'Machine Learning', 'Flutter', 'Coding!'],
-        typeSpeed: 50,
+      strings: ["Web Development", "Machine Learning", "Flutter", "Coding!"],
+      typeSpeed: 50,
     });
 
     return () => {
-        // Destroy Typed instance during cleanup to stop animation
-        typed.destroy();
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
     };
-    }, []);
+  }, []);
 
   return (
     <Section>
@@ -144,7 +152,9 @@ const Hero = () => {
 
           <Subtitle>Tech Enthusiast & Learner</Subtitle>
 
-          <Desc><span ref={el} /></Desc>
+          <Desc>
+            <span ref={el} />
+          </Desc>
           <Box>
             <LinkedInIcon
               onClick={() =>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
+import { OpenInNew } from "@mui/icons-material";
 
 const Section = styled.div`
   height: 100vh;
@@ -14,13 +15,12 @@ const Section = styled.div`
 `;
 
 const Container = styled.div`
-  width: 1400px;
+  width: 85%;
   justify-content: space-between;
   align-items: center;
 
   @media only screen and (max-width: 768px) {
-    padding: 20px;
-    width: 100%;
+    width: 90%;
     flex-direction: column;
   }
 `;
@@ -34,30 +34,54 @@ const List = styled.ul`
 
 const Projects = styled.h1`
   color: #da4ea2;
-  font-size: 65px;
-  padding: 30px 0 40px 0;
+  font-size: 60px;
+  padding: 40px 0 40px 0;
 
   @media only screen and (max-width: 768px) {
     font-size: 40px;
-    padding: 10px 0 25px 0;
+    padding: 15px 0 25px 0;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 45px;
+    padding: 30px 0 30px 0;
   }
 `;
 
 const ProjectTitle = styled.h2`
   color: white;
-  font-size: 40px;
+  font-size: 35px;
+  display: inline;
 
   @media only screen and (max-width: 768px) {
     font-size: 25px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 30px;
+  }
+`;
+
+const Link = styled(OpenInNew)`
+  display: inline;
+  margin-left: 15px;
+  color: #b9b9b9;
+  cursor: pointer;
+  font-size: 20px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 15px;
   }
 `;
 
 const ProjectDescription = styled(Box)`
   color: #b9b9b9;
-  font-size: 18px;
+  font-size: 16px;
 
   @media only screen and (max-width: 768px) {
     font-size: 14px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 15px;
   }
 `;
 
@@ -69,6 +93,14 @@ const Works = () => {
         <List>
           <li>
             <ProjectTitle>Chatterbox</ProjectTitle>
+            <Link
+              onClick={() =>
+                window.open(
+                  "https://github.com/Narendra-Jadhav/ChatterBox",
+                  "_blank"
+                )
+              }
+            />
             <ProjectDescription>
               Chatterbox is a real-time messaging app powered by Node.js and
               Socket.IO, enabling users to engage in instant conversations with
@@ -80,6 +112,14 @@ const Works = () => {
           </li>
           <li>
             <ProjectTitle>TaskMaster</ProjectTitle>
+            <Link
+              onClick={() =>
+                window.open(
+                  "https://github.com/Narendra-Jadhav/TaskMaster",
+                  "_blank"
+                )
+              }
+            />
             <ProjectDescription>
               TaskMaster is a sleek and powerful task management app built with
               Flutter. It seamlessly integrates with Firebase, utilizing
@@ -89,6 +129,14 @@ const Works = () => {
           </li>
           <li>
             <ProjectTitle>Weatherly</ProjectTitle>
+            <Link
+              onClick={() =>
+                window.open(
+                  "https://github.com/Narendra-Jadhav/Weatherly",
+                  "_blank"
+                )
+              }
+            />
             <ProjectDescription>
               An intuitive weather app developed with Flutter. It harnesses the
               power of the OpenWeatherMap API to deliver accurate and up-todate
@@ -98,6 +146,14 @@ const Works = () => {
           </li>
           <li>
             <ProjectTitle>Keeper</ProjectTitle>
+            <Link
+              onClick={() =>
+                window.open(
+                  "https://github.com/Narendra-Jadhav/keeper",
+                  "_blank"
+                )
+              }
+            />
             <ProjectDescription>
               Keeper is a note-taking app developed with ReactJS. It allows
               users to create notes by taking title and description.

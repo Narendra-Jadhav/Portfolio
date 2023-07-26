@@ -24,6 +24,9 @@ const Left = styled.div`
   @media only screen and (max-width: 768px) {
     justify-content: center;
   }
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    padding-left: 2%;
+  }
 `;
 
 const Title = styled.h1`
@@ -37,7 +40,11 @@ const Form = styled.form`
   gap: 25px;
 
   @media only screen and (max-width: 768px) {
-    width: 300px;
+    width: 70%;
+    height: 80%;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    width: 85%;
   }
 `;
 
@@ -63,6 +70,11 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 5px;
   padding: 20px;
+
+  &:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
 `;
 
 const Right = styled.div`
@@ -76,9 +88,11 @@ const Right = styled.div`
 const Contact = () => {
   const ref = useRef();
   const [success, setSuccess] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     emailjs
       .sendForm(
@@ -91,10 +105,19 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           setSuccess(true);
+
+          // Reset the form fields
+          ref.current.reset();
+
+          setTimeout(() => {
+            setSuccess(false);
+            setIsLoading(false);
+          }, 3000);
         },
         (error) => {
           console.log(error.text);
           setSuccess(false);
+          setIsLoading(false);
         }
       );
   };
@@ -112,9 +135,13 @@ const Contact = () => {
               name="message"
               rows={10}
             />
-            <Button type="submit">Send</Button>
-            {success &&
-              "Your message has been sent. We'll get back to you soon :)"}
+            <Button type="submit" disabled={isLoading || success === false}>
+              {isLoading ? "Sending..." : "Send"}
+            </Button>
+            {success === true && (
+              <p>Your message has been sent. We'll get back to you soon :)</p>
+            )}
+            {success === false && <p>Send another mail afterwards!</p>}
           </Form>
         </Left>
         <Right>
